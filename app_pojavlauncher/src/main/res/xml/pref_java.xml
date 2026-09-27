@@ -30,6 +30,12 @@
             app2:seekBarIncrement="@integer/memory_seekbar_increment"
             app2:selectable="false"/>
 
+        <androidx.preference.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="experimentalG1Gc"
+            android:summary="@string/preference_experimental_g1gc_summary"
+            android:title="@string/preference_experimental_g1gc_title" />
+
         <SwitchPreference
             android:defaultValue="true"
             android:icon="@drawable/ic_px_java_run"

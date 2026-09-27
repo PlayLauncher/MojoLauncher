@@ -42,6 +42,12 @@ public class LauncherPreferenceVideoFragment extends LauncherPreferenceFragment 
             resolutionSeekbar.setValue(resolution);
         }
 
+        CustomSeekBarPreference gpuRenderDistance = requirePreference("experimentalGpuRenderDistance",
+            CustomSeekBarPreference.class);
+        gpuRenderDistance.setMaxKeepIncrement(16);
+        gpuRenderDistance.setSuffix(" chunks");
+        gpuRenderDistance.setValue(LauncherPreferences.PREF_EXPERIMENTAL_GPU_RENDER_DISTANCE);
+
         // Sustained performance is only available since Nougat
         SwitchPreference sustainedPerfSwitch = requirePreference("sustainedPerformance",
                 SwitchPreference.class);
@@ -92,5 +98,7 @@ public class LauncherPreferenceVideoFragment extends LauncherPreferenceFragment 
     private void computeVisibility(){
         requirePreference("force_vsync", SwitchPreferenceCompat.class)
                 .setVisible(LauncherPreferences.PREF_USE_ALTERNATE_SURFACE);
+        boolean experimentalPerformanceMode = LauncherPreferences.PREF_EXPERIMENTAL_PERFORMANCE_MODE;
+        requirePreference("experimentalGpuRenderDistance").setVisible(experimentalPerformanceMode);
     }
 }

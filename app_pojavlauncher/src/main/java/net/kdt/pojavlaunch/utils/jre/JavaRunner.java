@@ -95,8 +95,22 @@ public class JavaRunner {
         String resolvFile;
         resolvFile = new File(Tools.DIR_DATA,"resolv.conf").getAbsolutePath();
 
-        userArguments.add(0, "-Xms"+LauncherPreferences.PREF_RAM_ALLOCATION+"M");
+        boolean hasUserMaxHeap = hasArgumentStartingWith(userArguments, "-Xmx");
+        if (!hasArgumentStartingWith(userArguments, "-Xms") && !hasUserMaxHeap) {
+            int initialHeapMb = Math.min(512, Math.max(128, LauncherPreferences.PREF_RAM_ALLOCATION / 4));
+            userArguments.add(0, "-Xms" + initialHeapMb + "M");
+        }
         userArguments.add(0, "-Xmx"+LauncherPreferences.PREF_RAM_ALLOCATION+"M");
+
+        if (LauncherPreferences.PREF_EXPERIMENTAL_G1GC && !hasGarbageCollectorArgument(userArguments)) {
+            userArguments.add("-XX:+UseG1GC");
+            if (!hasJvmOption(userArguments, "ParallelRefProcEnabled")) {
+                userArguments.add("-XX:+ParallelRefProcEnabled");
+            }
+            if (!hasJvmOption(userArguments, "MaxGCPauseMillis")) {
+                userArguments.add("-XX:MaxGCPauseMillis=50");
+            }
+        }
 
         ArrayList<String> overridableArguments = new ArrayList<>(Arrays.asList(
                 "-Djava.home=" + runtimeHome,
@@ -144,6 +158,28 @@ public class JavaRunner {
         //Add all the arguments
         userArguments.addAll(additionalArguments);
         return userArguments;
+    }
+
+    private static boolean hasArgumentStartingWith(List<String> arguments, String prefix) {
+        for (String argument : arguments) {
+            if (argument.startsWith(prefix)) return true;
+        }
+        return false;
+    }
+
+    private static boolean hasGarbageCollectorArgument(List<String> arguments) {
+        for (String argument : arguments) {
+            if ((argument.startsWith("-XX:+Use") || argument.startsWith("-XX:-Use")) && argument.endsWith("GC")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasJvmOption(List<String> arguments, String optionName) {
+        return hasArgumentStartingWith(arguments, "-XX:+" + optionName)
+                || hasArgumentStartingWith(arguments, "-XX:-" + optionName)
+                || hasArgumentStartingWith(arguments, "-XX:" + optionName + "=");
     }
 
     private static File getVmPath(File runtimeHomeDir, String arch, String flavor) {

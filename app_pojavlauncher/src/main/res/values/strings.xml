@@ -53,7 +53,11 @@
     <string name="mcl_setting_title_ignore_notch">Ignore notch</string>
     <string name="mcl_setting_subtitle_ignore_notch">Ignores the notch and extends the screen under it.\nGives you a more immersive experience.</string>
     <string name="mcl_setting_title_resolution_scaler">Resolution Scaler</string>
-    <string name="mcl_setting_subtitle_resolution_scaler">Allows you to decrease the game resolution. 100% is full resolution.</string>
+    <string name="mcl_setting_subtitle_resolution_scaler">Lower resolution can improve FPS and reduce GPU memory pressure. 100% is full resolution.</string>
+    <string name="preference_experimental_performance_mode_title">Experimental GPU memory controls</string>
+    <string name="preference_experimental_performance_mode_summary">Enable the render-distance control below. Lower values can reduce GPU memory pressure but do not set a VRAM limit.</string>
+    <string name="preference_experimental_gpu_pressure_title">GPU memory pressure (render distance)</string>
+    <string name="preference_experimental_gpu_pressure_summary">Sets render distance from 2 to 16 chunks and caps simulation distance at 4 on every launch. This only indirectly affects VRAM use.</string>
     <string name="mcl_setting_title_longpresstrigger">Trigger long press delay</string>
     <string name="mcl_setting_subtitle_longpresstrigger">Change long press trigger delay for destroying blocks and dropping items.</string>
     <string name="mcl_setting_title_buttonscale">Control buttons scaling</string>
@@ -181,6 +185,8 @@
     <string name="address_memory_warning_msg">The current amount of free addressable RAM space (%d) is lower than the allocated RAM (%d), which will lead to crashes. Change the allocation if the game crashes.</string>
     <string name="mcl_memory_allocation">Memory allocation</string>
     <string name="mcl_memory_allocation_subtitle">Controls how much memory is given to the Java runtime.</string>
+    <string name="preference_experimental_g1gc_title">Experimental G1GC tuning</string>
+    <string name="preference_experimental_g1gc_summary">Adds G1GC pause-tuning flags unless you selected another collector or set these flags yourself. May reduce stutter; results vary by device.</string>
     <string name="multirt_runtime_corrupt">Corrupted Java Runtime</string>
     <string name="multirt_runtime_incompatiblearch">Incompatible architecture: %s</string>
     <string name="multirt_config_title">Java Runtimes</string>

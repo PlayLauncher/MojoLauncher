@@ -42,6 +42,9 @@ public class LauncherPreferences {
     public static int PREF_RAM_ALLOCATION;
     public static String PREF_DEFAULT_RUNTIME;
     public static boolean PREF_SUSTAINED_PERFORMANCE = false;
+    public static boolean PREF_EXPERIMENTAL_G1GC = false;
+    public static boolean PREF_EXPERIMENTAL_PERFORMANCE_MODE = false;
+    public static int PREF_EXPERIMENTAL_GPU_RENDER_DISTANCE = 6;
     public static boolean PREF_VIRTUAL_MOUSE_START = false;
     public static boolean PREF_USE_ALTERNATE_SURFACE = true;
     public static boolean PREF_JAVA_SANDBOX = true;
@@ -94,6 +97,9 @@ public class LauncherPreferences {
         PREF_RAM_ALLOCATION = DEFAULT_PREF.getInt("allocation", findBestRAMAllocation(ctx));
         PREF_CUSTOM_JAVA_ARGS = DEFAULT_PREF.getString("javaArgs", "");
         PREF_SUSTAINED_PERFORMANCE = DEFAULT_PREF.getBoolean("sustainedPerformance", isDevicePowerful);
+        PREF_EXPERIMENTAL_G1GC = DEFAULT_PREF.getBoolean("experimentalG1Gc", false);
+        PREF_EXPERIMENTAL_PERFORMANCE_MODE = DEFAULT_PREF.getBoolean("experimentalPerformanceMode", false);
+        PREF_EXPERIMENTAL_GPU_RENDER_DISTANCE = DEFAULT_PREF.getInt("experimentalGpuRenderDistance", 6);
         PREF_VIRTUAL_MOUSE_START = DEFAULT_PREF.getBoolean("mouse_start", false);
         PREF_USE_ALTERNATE_SURFACE = DEFAULT_PREF.getBoolean("alternate_surface", isDevicePowerful);
         PREF_JAVA_SANDBOX = DEFAULT_PREF.getBoolean("java_sandbox", true);

@@ -31,6 +31,22 @@
             android:icon="@drawable/ic_px_resolution"
             />
 
+        <androidx.preference.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="experimentalPerformanceMode"
+            android:summary="@string/preference_experimental_performance_mode_summary"
+            android:title="@string/preference_experimental_performance_mode_title" />
+
+        <net.kdt.pojavlaunch.prefs.CustomSeekBarPreference
+            android:defaultValue="6"
+            android:key="experimentalGpuRenderDistance"
+            android:max="16"
+            android:summary="@string/preference_experimental_gpu_pressure_summary"
+            android:title="@string/preference_experimental_gpu_pressure_title"
+            app2:min="2"
+            app2:seekBarIncrement="1"
+            app2:showSeekBarValue="true" />
+
         <SwitchPreference
             android:title="@string/preference_sustained_performance_title"
             android:summary="@string/preference_sustained_performance_description"

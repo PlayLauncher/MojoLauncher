@@ -39,7 +39,11 @@
     <string name="mcl_setting_title_ignore_notch">Ignoruj wcięcie</string>
     <string name="mcl_setting_subtitle_ignore_notch">Ignoruje wycięcie i rozszerza znajdujący się pod nim ekran. \nZapewnia bardziej wciągające wrażenia.</string>
     <string name="mcl_setting_title_resolution_scaler">Skalowanie rozdzielczości</string>
-    <string name="mcl_setting_subtitle_resolution_scaler">Pozwala na zmniejszenie rozdzielczości gry. 100% to pełna rozdzielczość.</string>
+    <string name="mcl_setting_subtitle_resolution_scaler">Niższa rozdzielczość może zwiększyć FPS i zmniejszyć obciążenie pamięci GPU. 100% to pełna rozdzielczość.</string>
+    <string name="preference_experimental_performance_mode_title">Eksperymentalne sterowanie pamięcią GPU</string>
+    <string name="preference_experimental_performance_mode_summary">Włącza poniższy suwak zasięgu renderowania. Niższa wartość może zmniejszyć obciążenie pamięci GPU, ale nie ustawia limitu VRAM.</string>
+    <string name="preference_experimental_gpu_pressure_title">Obciążenie pamięci GPU (zasięg renderowania)</string>
+    <string name="preference_experimental_gpu_pressure_summary">Ustawia zasięg renderowania od 2 do 16 chunków i ogranicza zasięg symulacji do 4 przy każdym uruchomieniu. To tylko pośrednio wpływa na zużycie VRAM.</string>
     <string name="mcl_setting_title_longpresstrigger">Uruchom długie opóźnienie naciśnięcia</string>
     <string name="mcl_setting_subtitle_longpresstrigger">Zmień opóźnienie spustu długiego naciśnięcia w celu niszczenia bloków i upuszczania przedmiotów.</string>
     <string name="mcl_setting_title_buttonscale">Skalowanie przycisków sterujących</string>
@@ -148,6 +152,8 @@
     <string name="memory_warning_msg">Bieżąca ilość wolnej pamięci RAM (%d) jest mniejsza od przydzielonej pamięci RAM (%d), co może prowadzić do awarii. Zmień ilość, jeśli gra ulegnie awarii.</string>
     <string name="address_memory_warning_msg">Bieżąca ilość wolnej pamięci RAM (%d) jest niższa od przydzielonej pamięci, (%d), co może prowadzić do awarii. Zmień przydzielenie, jeśli gra ulegnie awarii.</string>
     <string name="mcl_memory_allocation">Przydział pamięci</string>
+    <string name="preference_experimental_g1gc_title">Eksperymentalne strojenie G1GC</string>
+    <string name="preference_experimental_g1gc_summary">Dodaje flagi G1GC, chyba że wybrano inny garbage collector lub własne wartości tych flag. Może ograniczyć przycięcia; efekt zależy od urządzenia.</string>
 
     <string name="multirt_runtime_corrupt">Uszkodzone środowisko wykonawcze Java</string>
     <string name="multirt_runtime_incompatiblearch">Niezgodna architektura: %s</string>

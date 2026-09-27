@@ -113,6 +113,19 @@ public class GameRunner {
         return renderDistance > 7;
     }
 
+    private static void applyExperimentalPerformanceMode(File gamedir) {
+        if (!LauncherPreferences.PREF_EXPERIMENTAL_PERFORMANCE_MODE) return;
+        try {
+            MCOptionUtils.load(gamedir.getAbsolutePath());
+            int renderDistance = LauncherPreferences.PREF_EXPERIMENTAL_GPU_RENDER_DISTANCE;
+            MCOptionUtils.set("renderDistance", Integer.toString(renderDistance));
+            MCOptionUtils.set("simulationDistance", Integer.toString(Math.min(4, renderDistance)));
+            MCOptionUtils.save();
+        } catch (Exception e) {
+            Log.e("Tools", "Failed to apply experimental performance mode", e);
+        }
+    }
+
     private static boolean isGl4esCompatible(JVersionList.Version version) throws Exception{
         return DateUtils.dateBefore(DateUtils.getOriginalReleaseDate(version), 2025, 1, 7);
     }
@@ -210,6 +223,8 @@ public class GameRunner {
         }
 
         boolean isLtw = renderer instanceof GLESRenderSpec.LTWRenderSpec;
+
+        applyExperimentalPerformanceMode(gamedir);
 
         if(isLtw && checkRenderDistance(versionInfo, gamedir)) {
             if(showDialog(activity, R.string.ltw_render_distance_warning_msg)) return;
